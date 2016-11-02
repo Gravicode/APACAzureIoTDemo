@@ -15,10 +15,10 @@ namespace SmartAssistant
 {
     public class FaceService
     {
-        const string EmoKey = "356c0ac7e05c43e2a755b46627d4501d";
-        const string FaceKey = "f485c0148bcc484ba6537a209d154b77";
-        private readonly IFaceServiceClient faceServiceClient = new FaceServiceClient(FaceKey);
-        private readonly EmotionServiceClient emotionServiceClient = new EmotionServiceClient(EmoKey);
+       
+    
+        private readonly IFaceServiceClient faceServiceClient = new FaceServiceClient(APPCONTANTS.FACE_KEY);
+        private readonly EmotionServiceClient emotionServiceClient = new EmotionServiceClient(APPCONTANTS.EMOTION_KEY);
 
         public async Task<FaceRectangle[]> UploadAndDetectFaces(StorageFile imageFile)
         {
@@ -59,7 +59,7 @@ namespace SmartAssistant
             }
         }
 
-        public async Task<string> HowOld(Face[] faces)
+        public string HowOld(Face[] faces)
         {
             try
             {

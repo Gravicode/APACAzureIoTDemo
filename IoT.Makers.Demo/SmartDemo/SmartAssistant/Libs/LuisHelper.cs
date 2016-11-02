@@ -38,7 +38,7 @@ namespace SmartAssistant
     }
     public class LuisHelper
     {
-        const string UrlLuis = "https://api.projectoxford.ai/luis/v1/application?id=911822dd-93e0-4598-9b8b-b6b4882ebce9&subscription-key=9c5be3b5d02e4f64a744d8f929eb05ad&q=";
+        readonly string UrlLuis = $"https://api.projectoxford.ai/luis/v1/application?id={APPCONTANTS.LUIS_APP_ID}&subscription-key={APPCONTANTS.LUIS_APP_KEY}&q=";
         public async Task<LuisResult> GetIntent(string CommandStr)
         {
             var res = new LuisResult() { IsSucceed = false, Value = "", Command = "none" };

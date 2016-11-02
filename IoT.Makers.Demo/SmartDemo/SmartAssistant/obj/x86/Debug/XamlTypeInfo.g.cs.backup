@@ -132,19 +132,21 @@ namespace SmartAssistant.SmartAssistant_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[5];
+            _typeNameTable = new string[6];
             _typeNameTable[0] = "SmartAssistant.MainPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
             _typeNameTable[3] = "uPLibrary.Networking.M2Mqtt.MqttClient";
             _typeNameTable[4] = "Object";
+            _typeNameTable[5] = "String";
 
-            _typeTable = new global::System.Type[5];
+            _typeTable = new global::System.Type[6];
             _typeTable[0] = typeof(global::SmartAssistant.MainPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
             _typeTable[3] = typeof(global::uPLibrary.Networking.M2Mqtt.MqttClient);
             _typeTable[4] = typeof(global::System.Object);
+            _typeTable[5] = typeof(global::System.String);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -195,6 +197,7 @@ namespace SmartAssistant.SmartAssistant_XamlTypeInfo
                 userType = new global::SmartAssistant.SmartAssistant_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_0_MainPage;
                 userType.AddMemberName("client");
+                userType.AddMemberName("MQTT_BROKER_ADDRESS");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -216,6 +219,10 @@ namespace SmartAssistant.SmartAssistant_XamlTypeInfo
             case 4:   //  Object
                 xamlType = new global::SmartAssistant.SmartAssistant_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
+
+            case 5:   //  String
+                xamlType = new global::SmartAssistant.SmartAssistant_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
             }
             return xamlType;
         }
@@ -231,6 +238,16 @@ namespace SmartAssistant.SmartAssistant_XamlTypeInfo
             var that = (global::SmartAssistant.MainPage)instance;
             that.client = (global::uPLibrary.Networking.M2Mqtt.MqttClient)Value;
         }
+        private object get_1_MainPage_MQTT_BROKER_ADDRESS(object instance)
+        {
+            var that = (global::SmartAssistant.MainPage)instance;
+            return that.MQTT_BROKER_ADDRESS;
+        }
+        private void set_1_MainPage_MQTT_BROKER_ADDRESS(object instance, object Value)
+        {
+            var that = (global::SmartAssistant.MainPage)instance;
+            that.MQTT_BROKER_ADDRESS = (global::System.String)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -244,6 +261,12 @@ namespace SmartAssistant.SmartAssistant_XamlTypeInfo
                 xamlMember = new global::SmartAssistant.SmartAssistant_XamlTypeInfo.XamlMember(this, "client", "uPLibrary.Networking.M2Mqtt.MqttClient");
                 xamlMember.Getter = get_0_MainPage_client;
                 xamlMember.Setter = set_0_MainPage_client;
+                break;
+            case "SmartAssistant.MainPage.MQTT_BROKER_ADDRESS":
+                userType = (global::SmartAssistant.SmartAssistant_XamlTypeInfo.XamlUserType)GetXamlTypeByName("SmartAssistant.MainPage");
+                xamlMember = new global::SmartAssistant.SmartAssistant_XamlTypeInfo.XamlMember(this, "MQTT_BROKER_ADDRESS", "String");
+                xamlMember.Getter = get_1_MainPage_MQTT_BROKER_ADDRESS;
+                xamlMember.Setter = set_1_MainPage_MQTT_BROKER_ADDRESS;
                 break;
             }
             return xamlMember;

@@ -17,10 +17,10 @@ namespace SmartAssistant
             {
                 CredentialStore = new SingleUserInMemoryCredentialStore
                 {
-                    ConsumerKey = "MKbCFe1z8IYVyjMJsSnvA",
-                    ConsumerSecret = "zmAQFP52CTO1ZYzoFLMnLxELeyt7iYIrCVs59mFkQ",
-                    AccessToken = "15628267-iFdsMnMVe6qQY6254s2PMSGFdR7a8Cf2h9kh7omnm",
-                    AccessTokenSecret = "Uz9USTVa4qSh3tRjUpyvx3rCLEd1Nz6wbP0QDikZKWQ"
+                    ConsumerKey = APPCONTANTS.Twitter_ConsumerKey,
+                    ConsumerSecret = APPCONTANTS.Twitter_ConsumerSecret,
+                    AccessToken = APPCONTANTS.Twitter_AccessToken,
+                    AccessTokenSecret = APPCONTANTS.Twitter_AccessTokenSecret
                 }
             };
             twitterCtx = new TwitterContext(auth);

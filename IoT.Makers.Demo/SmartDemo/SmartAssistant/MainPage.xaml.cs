@@ -14,11 +14,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Media.SpeechRecognition;
 using Windows.Media.SpeechSynthesis;
-
 using System.Text;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
-
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources.Core;
 using Windows.Globalization;
@@ -31,16 +29,6 @@ using Newtonsoft.Json;
 
 namespace SmartAssistant
 {
-    public class MediaItem{
-        public MediaPlaybackItem MediaPlaybackItem { get; private set; }
-        public Uri Uri { set; get; }
-        public MediaItem(string Url)
-        {
-            Uri = new Uri(Url);
-            MediaPlaybackItem = new MediaPlaybackItem(MediaSource.CreateFromUri(Uri));
-        }
-    }
-
     public enum Genre { Metal, Pop, Slow }
     public sealed partial class MainPage : Page
     {
@@ -67,10 +55,8 @@ namespace SmartAssistant
         private ResourceContext speechContext;
         private ResourceMap speechResourceMap;
         private Dictionary<string, string[]> VoiceCommands = null;
-        FaceService faceApi = null;
-        ComputerVisionService visionApi = null;
-        TwitterService twitterApi = null;
-        LuisHelper luisApi = null;
+        EngineContainer ApiContainer = new EngineContainer();
+       
         // Keep track of whether the continuous recognizer is currently running, so it can be cleaned up appropriately.
         private bool isListening;
         List<RoomSensor> sensorsData;
@@ -82,32 +68,37 @@ namespace SmartAssistant
             mp = new MediaPlayer();
             //Attach the player to the MediaPlayerElement:
             Player1.SetMediaPlayer(mp);
-            listMedia = new Dictionary<SmartAssistant.Genre, SmartAssistant.MediaItem>();
-            listMedia.Add(Genre.Metal, new SmartAssistant.MediaItem(@"ms-appx:///lagu/metal.mp3"));
-            listMedia.Add(Genre.Pop, new SmartAssistant.MediaItem(@"ms-appx:///lagu/lucu.mp3"));
-            listMedia.Add(Genre.Slow, new SmartAssistant.MediaItem(@"ms-appx:///lagu/santai.mp3"));
+            listMedia = new Dictionary<SmartAssistant.Genre, SmartAssistant.MediaItem>()
+            {
+                [Genre.Metal] = new SmartAssistant.MediaItem(@"ms-appx:///lagu/metal.mp3"),
+                [Genre.Pop] = new SmartAssistant.MediaItem(@"ms-appx:///lagu/lucu.mp3"),
+                [Genre.Slow] = new SmartAssistant.MediaItem(@"ms-appx:///lagu/santai.mp3")
+            };
+
+            //sensors data container
+            sensorsData = new List<RoomSensor>();
+            medicalData = new List<MedicalSensor>();
+            
             Player1.MediaPlayer.Volume = 80;
             Player1.AutoPlay = false;
           
-
             PopulateCommands();
+           
             //init intelligent service
-            faceApi = new SmartAssistant.FaceService();
-            visionApi = new SmartAssistant.ComputerVisionService();
-            twitterApi = new SmartAssistant.TwitterService();
-            luisApi = new SmartAssistant.LuisHelper();
-
-            sensorsData = new List<SmartAssistant.RoomSensor>();
-            medicalData = new List<SmartAssistant.MedicalSensor>();
+            ApiContainer.Register<FaceService>(new FaceService());
+            ApiContainer.Register<ComputerVisionService>(new ComputerVisionService());
+            ApiContainer.Register<TwitterService>(new TwitterService());
+            ApiContainer.Register<LuisHelper>(new LuisHelper());
+    
             isListening = false;
             //mqtt
             if (client == null)
             {
                 // create client instance 
-                MQTT_BROKER_ADDRESS = "cloud.makestro.com";
-                client = new MqttClient(MQTT_BROKER_ADDRESS);
+                
+                client = new MqttClient(APPCONTANTS.MQTT_SERVER);
                 string clientId = Guid.NewGuid().ToString();
-                client.Connect(clientId, "mifmasterz", "123qweasd");
+                client.Connect(clientId, APPCONTANTS.MQTT_USER, APPCONTANTS.MQTT_PASS);
                 SubscribeMessage();
 
             }
@@ -519,8 +510,8 @@ namespace SmartAssistant
                             {
                                 var photo = await TakePhoto();
                                 //call computer vision
-                                var faces = await faceApi.UploadAndDetectFaceAttributes(photo);
-                                var res = await faceApi.HowOld(faces);
+                                var faces = await ApiContainer.GetApi<FaceService>().UploadAndDetectFaceAttributes(photo);
+                                var res = ApiContainer.GetApi<FaceService>().HowOld(faces);
                                 if (!string.IsNullOrEmpty(res))
                                 {
                                     await speech.Read(res);
@@ -535,7 +526,7 @@ namespace SmartAssistant
                             {
                                 var photo = await TakePhoto();
                                 //call computer vision
-                                var res = await visionApi.RecognizeImage(photo);
+                                var res = await ApiContainer.GetApi<ComputerVisionService>().RecognizeImage(photo);
                                 if (!string.IsNullOrEmpty(res))
                                 {
                                     await speech.Read(res);
@@ -547,7 +538,7 @@ namespace SmartAssistant
                             {
                                 var photo = await TakePhoto();
                                 //call computer vision
-                                var res = await visionApi.RecognizeText(photo);
+                                var res = await ApiContainer.GetApi<ComputerVisionService>().RecognizeText(photo);
                                 if (!string.IsNullOrEmpty(res))
                                 {
                                     await speech.Read(res);
@@ -561,7 +552,7 @@ namespace SmartAssistant
                         case TagCommands.SeeMyEmo:
                             {
                                 var photo = await TakePhoto();
-                                var faces = await faceApi.UploadAndDetectFaces(photo);
+                                var faces = await ApiContainer.GetApi<FaceService>().UploadAndDetectFaces(photo);
                                 if (faces == null)
                                 {
                                     await speech.Read("I don't see any faces");
@@ -573,7 +564,7 @@ namespace SmartAssistant
                                 else if (faces.Count() == 1)
                                 {
                                     //call computer vision
-                                    var res = await faceApi.DetectEmotion(photo);
+                                    var res = await ApiContainer.GetApi<FaceService>().DetectEmotion(photo);
                                     if (!string.IsNullOrEmpty(res))
                                     {
                                         //await speech.Read(res);
@@ -615,7 +606,7 @@ namespace SmartAssistant
                             break;
                         case TagCommands.Twitter:
                             {
-                                var tweets = await twitterApi.GetTwittByHashtag("#trump", 1);
+                                var tweets = await ApiContainer.GetApi<TwitterService>().GetTwittByHashtag("#trump", 1);
                                 foreach (LinqToTwitter.Status x in tweets)
                                 {
                                     var y = await SentimentService.GetSentiment(x.Text);
@@ -838,12 +829,7 @@ namespace SmartAssistant
             }
         }
         public MqttClient client { set; get; }
-
-        public string MQTT_BROKER_ADDRESS
-        {
-            set; get;
-        }
-
+        
         void SubscribeMessage()
         {
 
@@ -865,9 +851,19 @@ namespace SmartAssistant
 
             {
                 case "mifmasterz/medical/data":
+                    //reset
+                    if (medicalData.Count > 10)
+                    {
+                        medicalData.Clear();
+                    }
                     medicalData.Add(JsonConvert.DeserializeObject<MedicalSensor>(Pesan));
                     break;
                 case "mifmasterz/tessel/data":
+                    //reset
+                    if (sensorsData.Count > 10)
+                    {
+                        sensorsData.Clear();
+                    }
                     sensorsData.Add(JsonConvert.DeserializeObject<RoomSensor>(Pesan));
                     break;
                 case "mifmasterz/assistant/data":
@@ -1025,7 +1021,7 @@ namespace SmartAssistant
             await dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
 
             {
-                var res = await luisApi.GetIntent(CommandStr);
+                var res = await ApiContainer.GetApi<LuisHelper>().GetIntent(CommandStr);
                 if (!res.IsSucceed) return;
                 resultTextBlock.Text = res.Command + ":" + res.Value;
                 switch (res.Command)
@@ -1122,6 +1118,8 @@ namespace SmartAssistant
         }
 
     }
+
+    #region Supporting Class
     public class MedicalSensor
     {
         public DateTime Tanggal { set; get; }
@@ -1142,4 +1140,15 @@ namespace SmartAssistant
     {
         public object ImageSource { get; set; }
     }
+    public class MediaItem
+    {
+        public MediaPlaybackItem MediaPlaybackItem { get; private set; }
+        public Uri Uri { set; get; }
+        public MediaItem(string Url)
+        {
+            Uri = new Uri(Url);
+            MediaPlaybackItem = new MediaPlaybackItem(MediaSource.CreateFromUri(Uri));
+        }
+    }
+    #endregion
 }

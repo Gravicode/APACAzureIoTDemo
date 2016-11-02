@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>1c2c75df-9906-4fa9-ab30-834a32d8d01a</PackageIdentityName>
     <PackageIdentityPublisher>CN=mifma</PackageIdentityPublisher>
-    <IntermediateOutputPath>E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -25,16 +25,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-28T23:09:28.246</Modified>
+      <Modified>2016-11-02T00:07:03.406</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\bin\x86\Debug\SmartAssistant.exe">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\bin\x86\Debug\SmartAssistant.exe">
       <PackagePath>entrypoint\SmartAssistant.exe</PackagePath>
-      <Modified>2016-10-28T23:09:26.406</Modified>
+      <Modified>2016-11-02T00:07:02.516</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mifma\.nuget\packages\linqtotwitter\4.1.0\lib\uap10.0\LinqToTwitter.uap10.dll">
       <PackagePath>LinqToTwitter.uap10.dll</PackagePath>
@@ -504,61 +504,61 @@
       <PackagePath>XamlAnimatedGif.dll</PackagePath>
       <Modified>2016-09-18T05:04:14.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\Images\knight.gif">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\Images\knight.gif">
       <PackagePath>Images\knight.gif</PackagePath>
       <Modified>2016-10-26T04:56:01.517</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\lagu\lucu.mp3">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\lagu\lucu.mp3">
       <PackagePath>lagu\lucu.mp3</PackagePath>
       <Modified>2016-10-13T06:13:26.942</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\lagu\santai.mp3">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\lagu\santai.mp3">
       <PackagePath>lagu\santai.mp3</PackagePath>
       <Modified>2016-10-13T06:10:02.062</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\lagu\metal.mp3">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\lagu\metal.mp3">
       <PackagePath>lagu\metal.mp3</PackagePath>
       <Modified>2016-10-13T06:10:33.498</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2016-10-12T15:13:34.544</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2015-09-21T00:30:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-21T00:30:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-21T00:30:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-21T00:30:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-21T00:30:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-21T00:30:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-21T00:30:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\bin\x86\Debug\SmartAssistant.xr.xml">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\bin\x86\Debug\SmartAssistant.xr.xml">
       <PackagePath>SmartAssistant.xr.xml</PackagePath>
       <Modified>2016-10-27T04:52:25.961</Modified>
     </AppxPackagedFile>
@@ -566,14 +566,14 @@
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2016-10-17T05:52:47.588</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-10-28T23:09:27.861</Modified>
+      <Modified>2016-11-02T00:07:03.148</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Jobs\AZURE-APAC-WEEKEND\Demo\Demo_2\IoT.Makers.Demo\SmartDemo\SmartAssistant\bin\x86\Debug\Core\SmartAssistant.exe">
+    <AppxPackagedFile Include="E:\Experiment\APACAzureIoTDemo\IoT.Makers.Demo\SmartDemo\SmartAssistant\bin\x86\Debug\Core\SmartAssistant.exe">
       <PackagePath>SmartAssistant.exe</PackagePath>
-      <Modified>2016-10-28T23:09:28.236</Modified>
+      <Modified>2016-11-02T00:07:03.402</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

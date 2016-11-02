@@ -66,7 +66,7 @@ namespace SmartAssistant
             var client = new HttpClient();
            
             // Request headers
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "0040bd42a68046fcaa204d3f70f8c9d6");
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", APPCONTANTS.BING_API_KEY);
 
             var uri = string.Format("https://api.cognitive.microsoft.com/bing/v5.0/news/search?q={0}&count={1}&offset={2}&mkt={3}&safeSearch={4}",Qry,3,0,"en-us","Moderate");
 

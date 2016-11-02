@@ -31,7 +31,7 @@ namespace SmartAssistant
         /// <summary>
         /// Your account key goes here.
         /// </summary>
-        private const string AccountKey = "a3b5cae52b4e4c9da87923a053d24b9c";
+     
 
         /// <summary>
         /// Maximum number of languages to return in language detection API.
@@ -49,7 +49,7 @@ namespace SmartAssistant
                     client.BaseAddress = new Uri(BaseUrl);
 
                     // Request headers.
-                    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", AccountKey);
+                    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", APPCONTANTS.TEXTANALYSIS_KEY);
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                     // Request body. Insert your text data here in JSON format.

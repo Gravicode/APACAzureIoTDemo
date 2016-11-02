@@ -17,8 +17,8 @@ namespace SmartAssistant
 {
     public class ComputerVisionService
     {
-        const string ComKey = "f4fcf7138c13415588f4aefceeb87655";
-        VisionServiceClient VisionServiceClient = new VisionServiceClient(ComKey);
+       
+        VisionServiceClient VisionServiceClient = new VisionServiceClient(APPCONTANTS.COMPUTERVISION_KEY);
 
         public async Task<byte[]> GetThumbnail(string Url, int width, int height)
         {

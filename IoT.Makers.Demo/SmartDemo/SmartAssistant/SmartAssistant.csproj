@@ -95,12 +95,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Libs\APPCONTANTS.cs" />
     <Compile Include="Libs\AudioCapturePermissions.cs" />
     <Compile Include="Libs\BingImagesHelper.cs" />
     <Compile Include="Libs\BingNewsHelper.cs" />
     <Compile Include="Libs\BingSearchHelper.cs" />
     <Compile Include="Libs\BingVideoHelper.cs" />
     <Compile Include="Libs\ComputerVisionService.cs" />
+    <Compile Include="Libs\EngineContainer.cs" />
     <Compile Include="Libs\FaceService.cs" />
     <Compile Include="Libs\JokeHelper.cs" />
     <Compile Include="Libs\LuisHelper.cs" />
